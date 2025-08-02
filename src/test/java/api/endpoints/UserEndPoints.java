@@ -48,6 +48,7 @@ public class UserEndPoints {
     {
         return given()
                 .pathParam("username", userName)
+                .accept(ContentType.JSON)
             .when()
                 .delete(Routes.delete_url);
     }
