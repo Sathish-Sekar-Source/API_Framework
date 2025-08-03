@@ -26,9 +26,13 @@
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.14.0</version>
                     <configuration>
-                        <source>1.8</source>
-                        <target>1.8</target>
+                        <source>21</source>
+                        <target>21</target>
                         <encoding>UTF-8</encoding>
+                        <compilerArgs>
+                            <arg>--add-opens</arg>
+                            <arg>jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED</arg>
+                        </compilerArgs>
                     </configuration>
                 </plugin>
             </plugins>
@@ -110,6 +114,12 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <version>2.18.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.38</version>
         </dependency>
 
     </dependencies>
