@@ -13,7 +13,7 @@
                     <include name="testDeleteUser"/>
                 </methods>
             </class> -->
-            <class name="api.test.UserTests">
+            <class name="api.test.UserTests2">
                 <methods>
                     <include name="testPostUser"/>
                     <include name="testGetUserByName"/>
