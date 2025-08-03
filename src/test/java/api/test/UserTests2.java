@@ -47,17 +47,17 @@ public class UserTests2 {
     public void testGetUserByName() throws InterruptedException {
         logger.info("********* Getting User Info *********");
         System.out.println("username: " + this.userPayload.getUsername());
-        Thread.sleep(1000);
+        Thread.sleep(10000);
         Response response = UserEndPoints2.readUser(this.userPayload.getUsername());
         response.then().log().all();
 
-        System.out.println("User Name"+response.jsonPath().get("username"));
+        System.out.println("User Name: "+response.jsonPath().get("username"));
         Assert.assertEquals(response.getStatusCode(), 200);
         logger.info("********** User Info Retrieved Successfully *********");
     }
 
     @Test(priority = 3)
-    public void testUpdateUserByName() {
+    public void testUpdateUserByName() throws InterruptedException {
         logger.info("********* Updating User *********");
         userPayload.setFirstName(faker.name().firstName());
         userPayload.setLastName(faker.name().lastName());
@@ -67,11 +67,12 @@ public class UserTests2 {
         System.out.println("updated LastName: " + userPayload.getLastName());
         System.out.println("updated Email: " + userPayload.getEmail());
 
+        Thread.sleep(4000);
         Response response = UserEndPoints2.updateUser(this.userPayload.getUsername(), userPayload);
         response.then().log().all();
-
         Assert.assertEquals(response.getStatusCode(), 200);
 
+        Thread.sleep(4000);
         Response responseAfterUpdate = UserEndPoints2.readUser(this.userPayload.getUsername());
         Assert.assertEquals(responseAfterUpdate.getStatusCode(), 200);
 
@@ -91,11 +92,12 @@ public class UserTests2 {
     @Test(priority = 4)
     public void testDeleteUserByName() throws InterruptedException {
         logger.info("********* Deleting User *********");
-        Thread.sleep(1000);
+        Thread.sleep(10000);
         Response response = UserEndPoints2.deleteUser(this.userPayload.getUsername()); // this.userPayload.getUsername()
         System.out.println("Delete User Response: " + response.asString());
         Assert.assertEquals(response.getStatusCode(), 200);
 
+        Thread.sleep(10000);
         Response responseAfterDelete = UserEndPoints2.readUser(this.userPayload.getUsername()); //this.userPayload.getUsername()
         Assert.assertEquals(responseAfterDelete.getStatusCode(), 404);
         logger.info("********** User Deleted Successfully *********");

@@ -47,7 +47,7 @@ public class UserTests {
     public void testGetUserByName() throws InterruptedException {
         logger.info("********* Getting User Info *********");
         System.out.println("username: " + this.userPayload.getUsername());
-        Thread.sleep(1000);
+        Thread.sleep(10000);
         Response response = UserEndPoints.readUser(this.userPayload.getUsername());
         response.then().log().all();
 
